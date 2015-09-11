@@ -1,24 +1,12 @@
 'use strict';
 
-var _Object$assign = require('babel-runtime/core-js/object/assign')['default'];
-
-var _Object$keys = require('babel-runtime/core-js/object/keys')['default'];
-
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-exports['default'] = createNodeLogger;
-var _extends = _Object$assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }return target;
-};
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports['default'] = createNodeLogger;
 var RenderKid = require('renderkid');
 
 var kid = new RenderKid();
@@ -27,7 +15,7 @@ var kid = new RenderKid();
 var topLevel = function topLevel(obj, rightArrow) {
 
   var formatted = '';
-  _Object$keys(obj).forEach(function (key) {
+  Object.keys(obj).forEach(function (key) {
     if (key.length > 0) formatted += '<label>' + rightArrow + ' ' + key + '</label>';
     if (obj[key]) formatted += '<pre>' + JSON.stringify(obj[key]) + '</pre>';
   });
@@ -44,7 +32,7 @@ var renderToConsole = function renderToConsole(obj, rightArrow) {
 };
 
 function createNodeLogger(customOptions) {
-  var options = _extends({}, {
+  var options = _extends({
     downArrow: '▼',
     rightArrow: '▶',
     messageColor: 'bright-yellow',
