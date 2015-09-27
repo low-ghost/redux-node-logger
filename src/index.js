@@ -1,12 +1,3 @@
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-    for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-        }
-    }
-} return target; };
-
 const RenderKid = require('renderkid');
 
 const kid = new RenderKid();
@@ -34,15 +25,16 @@ const renderToConsole = (obj, rightArrow) => {
 };
 
 export default function createNodeLogger(customOptions) {
-  const options = _extends({}, {
+  const options = {
     downArrow: '▼',
     rightArrow: '▶',
     messageColor: 'bright-yellow',
     prevColor: 'grey',
     actionColor: 'bright-blue',
     nextColor: 'green',
-    predicate: ''
-  }, customOptions);
+    predicate: '',
+    ...customOptions
+  };
 
   return ({ getState }) => next => action => {
 
