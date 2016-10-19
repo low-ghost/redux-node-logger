@@ -38,14 +38,6 @@ export default function createNodeLogger(customOptions) {
 
   return ({ getState }) => next => action => {
 
-  //bailout on provided predicate
-  if (typeof predicate === 'function' && !predicate(getState, action))
-    return next(action);
-
-  //bailout on console undefined
-  if (typeof console === 'undefined')
-    return next(action);
-
   const {
     downArrow,
     rightArrow,
@@ -54,6 +46,14 @@ export default function createNodeLogger(customOptions) {
     actionColor,
     nextColor,
     predicate } = options;
+
+  //bailout on provided predicate
+  if (typeof predicate === 'function' && !predicate(getState, action))
+    return next(action);
+
+  //bailout on console undefined
+  if (typeof console === 'undefined')
+    return next(action);
 
   const prevState = renderToConsole(getState(), rightArrow);
   const actionDisplay = renderToConsole(action, rightArrow);
