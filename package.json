@@ -1,6 +1,6 @@
 {
   "name": "redux-node-logger",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Redux logger for a node environment",
   "main": "build/index.js",
   "scripts": {
